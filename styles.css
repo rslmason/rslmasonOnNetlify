@@ -1,0 +1,38 @@
+html {
+    font-size: 62.5%;
+
+}
+body {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1, p {
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-shadow: 1px 1px green -1px -1px green;
+    color: greenyellow;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+main {
+    padding: 0 1em 0 1em ;
+    width: 450px;
+    height: 250px;
+    border: 1px solid yellowgreen;
+    box-shadow: 1px 1px green -1px -1px green;
+    border-radius: 4px;
+}
+
+p span {
+    animation: blinker 1s cubic-bezier(1,-0.04,0,1.06) infinite;
+}
+  
+@keyframes blinker {
+    0% {
+      opacity: 0;
+    }
+}
