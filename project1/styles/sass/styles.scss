@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Roboto:wght@400;700&display=swap');
+@import 'partials/setup';
+@import 'partials/variables';
+@import 'partials/typography';
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    input {
+        width: calc(50% - 5px);
+        &[type="submit"] {
+            width:100%;
+        }
+    }
+    textarea {
+        width: 100%;
+        resize: none;
+        height: 200px;
+    }
+    input, textarea {
+        border: none;
+        padding: 1rem;
+        margin-bottom: 10px;
+        &::placeholder{
+            color: $grey;
+            font-style: italic;
+        }
+    }
+}
+
+.banner {
+    &.homeBanner{
+        background-image: url($homeBannerURL);
+    }
+    &.contactBanner{
+        background-image: url($contactBannerURL);
+    }
+    &.blogBanner{
+        background-image: url($blogBannerURL);
+    }
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+    width: 100%;
+    height: 25vw;
+}
+
+button, input[type=submit] {
+    background-color: $secondary;
+    padding: 1rem 1.5rem;
+    border: none;
+}
+
+h1 {
+    position: relative;
+    svg {
+        position: absolute;
+        width: 11rem;
+        height: 7rem;
+        top: -2rem;
+        left: -3rem;
+        text {
+            fill: $lightFont;
+        }
+        path {
+            d: path("M 15,65 A 5,4 340,0,1 95,34");
+            fill: none;
+        }
+    }
+}
+
+nav {
+    background-color: $primary;
+    width: 100%;
+    z-index: 30;
+    ul {
+        justify-content: space-between;
+        align-items: center;
+        padding: $smallOffset max(20%, calc((100% - 700px) / 2));
+        li {
+            a {
+                padding: 1rem;
+            }
+        }
+    }
+}
+
+img {
+    object-fit: cover;
+}
+
+header {
+    padding: 0 max(10%, calc((100% - 1200px) / 2));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $primary;
+
+    img {
+        position: relative;
+        top: $paddingSize;
+        width: 40%;
+        box-shadow: $smallOffset $smallOffset 0 0 $lightFont;
+        @media (max-width: 800px) {
+            width: 100%;
+            top: $largeOffset;
+        }
+    }
+
+    h1 {
+        margin-top: $paddingSize;
+    }
+
+    &.banner{
+        align-items: flex-end;
+        h1 {
+            position: relative;
+            top: calc($largeFontsize / 2);
+        }
+        @media (max-width: 800px) {
+            flex-direction: row;
+        }
+    }
+
+    @media (max-width: 800px) {
+        flex-direction: column;
+    }
+}
+
+section {
+    display: flex;
+    justify-content: space-between;
+    padding: $paddingSize max(10%, calc((100% - 1200px) / 2));
+    background-color: $lightgrey;
+    margin: 0;
+    @media (max-width: 800px) {
+        flex-direction: column;
+        padding: $paddingSize 5%;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    &.gallery {
+        background-color: white;
+        img {
+            width: calc(33% - $largeOffset);
+            @media (max-width: 800px) {
+                width: 100%;
+                &:not(:last-child) {
+                    margin-bottom: $smallOffset;
+                }
+            }
+        }
+    }
+
+    &.card {
+        h2 {
+            margin: 0;
+        }
+        img {            
+            width: calc(25% - $smallOffset);
+            margin: 0 $smallOffset $smallOffset 0;
+            box-shadow: $smallOffset $smallOffset 0 0 $primary;
+            @media (max-width: 800px) {
+                width: 100%;
+            }
+        }
+        div {
+            width: 75%;
+            padding-left: $paddingSize;
+            justify-content: space-between;
+            @media (max-width: 800px) {
+                width: 100%;
+                padding: 0;
+            }
+        }
+
+    }
+
+    &.split{
+        position: relative;
+        background-color: white;
+        
+        padding-top: 0;
+        padding-bottom: 0;
+        @media (max-width: 800px) {
+            padding: 0;
+            color: $lightFont
+        }
+        h2 {
+            margin: 0;
+        }
+        img {
+            width: 50%;
+            z-index: 20;
+            position: relative;
+            top: calc(-#{$smallOffset} + -#{$largeOffset});
+            @media (max-width: 800px) {
+                width: calc(100% - 2 * $smallOffset);
+            }
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            width: calc(50% + $smallOffset);
+            height: 100%;
+            left: 0;
+            top: -$largeOffset;
+            background-color: $tertiary;
+            z-index: 10;
+            @media (max-width: 800px) {
+                width: calc(100% - $smallOffset);
+            }
+        }
+        div {
+            width: 50%;
+            justify-content: flex-end;
+            padding: 0 0 $largeOffset $paddingSize;
+            z-index: 15;
+            @media (max-width: 800px) {
+                position: relative;
+                width: calc(100% - 4 * $smallOffset);
+                top: -$largeOffset;
+            }
+        }
+        &:nth-of-type(odd) {
+            flex-direction: row-reverse;
+            text-align: right;
+            @media (max-width: 800px) {
+                flex-direction: column;
+                align-items: flex-end;
+            }
+            img {
+                top: $largeOffset;
+            }
+            &::before {
+                width: calc(50% - $smallOffset);
+                left: auto;
+                right: 0px;
+                top: $smallOffset + $largeOffset;
+                background-color: $primary;
+                @media (max-width: 800px) {
+                    width: calc(100% - 3 * $smallOffset);
+                }
+            }
+            div {
+                justify-content: flex-start;
+                padding: $largeOffset $paddingSize 0 0;
+                align-items: flex-end;
+                @media (max-width: 800px) {
+                    top: $smallOffset;
+                }
+            }
+        }
+    }
+
+    &.bullets {
+        @media (max-width: 800px) {
+            padding: $paddingSize 10%;
+        }
+        ul {
+            flex-wrap: wrap;
+            width: 100%;
+            margin: 0; // this is needed to overwrite a fa-ul property!
+            @media (max-width: 800px) {
+                flex-direction: column;
+            }
+            li {
+                --fa-li-width: 5.0rem;
+                // font-size: 2.5rem;
+                font-size: calc(var(--fa-li-width ) / 2);
+                padding: 0 $smallOffset;
+                width: calc(50% - var(--fa-li-width));
+                @media (max-width: 800px) {
+                    width: calc(100% - var(--fa-li-width));
+                    padding: 0 0 0 $smallOffset;
+                }
+                margin-left: var(--fa-li-width);
+                &:nth-of-type(even) {
+                    width: calc(50% - var(--fa-li-width) - $smallOffset);
+                    margin-left: calc(var(--fa-li-width) + $smallOffset);
+                    @media (max-width: 800px) {
+                        width: calc(100% - var(--fa-li-width));
+                        margin-left: var(--fa-li-width);
+                    }
+                    padding-right: 0;
+                }
+                h3  {
+                    line-height: var(--fa-li-width);
+                    margin: 0;
+                }
+                .fa-stack {
+                    width: var(--fa-li-width);
+                    .fa-stack-2x {
+                        color: $orangey-yellow;
+                    }
+                    .fa-stack-1x{
+                        color: $black;
+                    }
+                }
+            }
+        }
+    }
+    
+    &.contact, &.blog{
+        > div {
+            &:nth-of-type(1){
+                width: calc(35% - $largeOffset);
+                @media (max-width: 800px) {
+                    width: 100%;
+                }
+
+            }
+            &:nth-of-type(2){
+                width: 65%;
+                @media (max-width: 800px) {
+                    width: 100%;
+                }
+                div {
+                    img {
+                        width: 8rem;
+                    }
+                    &:first-of-type, &:last-of-type {
+                        border-bottom: 3px solid $primary;
+                    }
+                }
+            }
+            div {
+                background-color: white;
+                padding: $largeOffset;            
+                width: 100%;
+                &:last-child {
+                    @media (max-width: 800px) {
+                        margin-bottom: $smallOffset;
+                    }
+                }
+                ul {
+                    li {
+                        &:not(:last-child) {
+                            margin-right: $largeOffset;
+                        }
+                    }
+                    margin-bottom: 10px;
+                }
+                ul:only-child {
+                    flex-direction: column;
+                    li{
+                        margin-left: 2rem;
+                        &::before {
+                            content: "•"; 
+                            left: -2rem;
+                            position: relative;
+                            color: $primary;
+                        }
+                    }
+                }
+                img {
+                    width: 100%;
+                }
+                &:not(:last-child) {
+                    margin-bottom: $smallOffset;
+                }
+            }
+        }
+    }    
+}
