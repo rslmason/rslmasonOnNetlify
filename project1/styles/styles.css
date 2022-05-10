@@ -374,6 +374,7 @@ button, input[type=submit] {
 
 h1 {
   position: relative;
+  margin: 0;
 }
 h1 svg {
   position: absolute;
@@ -716,10 +717,22 @@ section.contact > div:nth-of-type(2), section.blog > div:nth-of-type(2) {
     width: 100%;
   }
 }
-section.contact > div:nth-of-type(2) div img, section.blog > div:nth-of-type(2) div img {
+section.contact > div:nth-of-type(2) > div:not(:first-child), section.blog > div:nth-of-type(2) > div:not(:first-child) {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+section.contact > div:nth-of-type(2) > div:not(:first-child) div, section.blog > div:nth-of-type(2) > div:not(:first-child) div {
+  padding: 0 0 0 20px;
+}
+section.contact > div:nth-of-type(2) > div:not(:first-child) div h4, section.blog > div:nth-of-type(2) > div:not(:first-child) div h4 {
+  margin: 0;
+}
+section.contact > div:nth-of-type(2) > div:not(:first-child) img, section.blog > div:nth-of-type(2) > div:not(:first-child) img {
   width: 8rem;
 }
-section.contact > div:nth-of-type(2) div:first-of-type, section.contact > div:nth-of-type(2) div:last-of-type, section.blog > div:nth-of-type(2) div:first-of-type, section.blog > div:nth-of-type(2) div:last-of-type {
+section.contact > div:nth-of-type(2) > div:first-of-type, section.contact > div:nth-of-type(2) > div:last-of-type, section.blog > div:nth-of-type(2) > div:first-of-type, section.blog > div:nth-of-type(2) > div:last-of-type {
   border-bottom: 3px solid #f6a823;
 }
 section.contact > div div, section.blog > div div {

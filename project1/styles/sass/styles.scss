@@ -63,6 +63,7 @@ button, input[type=submit] {
 
 h1 {
     position: relative;
+    margin: 0;
     svg {
         position: absolute;
         width: 11rem;
@@ -281,7 +282,6 @@ section {
             }
             li {
                 --fa-li-width: 5.0rem;
-                // font-size: 2.5rem;
                 font-size: calc(var(--fa-li-width ) / 2);
                 padding: 0 $smallOffset;
                 width: calc(50% - var(--fa-li-width));
@@ -330,9 +330,18 @@ section {
                 @media (max-width: 800px) {
                     width: 100%;
                 }
-                div {
-                    img {
-                        width: 8rem;
+                > div {
+                    &:not(:first-child) {
+                        flex-direction: row;
+                        div {
+                            padding: 0 0 0 $smallOffset;
+                            h4 {
+                                margin: 0;
+                            }
+                        }
+                        img {
+                            width: 8rem;
+                        }
                     }
                     &:first-of-type, &:last-of-type {
                         border-bottom: 3px solid $primary;
