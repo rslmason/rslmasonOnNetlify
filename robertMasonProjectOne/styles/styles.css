@@ -371,6 +371,9 @@ button, input[type=submit] {
   padding: 1rem 1.5rem;
   border: none;
 }
+button:hover, input[type=submit]:hover {
+  outline: 1px solid #285e64;
+}
 
 h1 {
   position: relative;

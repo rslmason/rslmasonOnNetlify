@@ -59,6 +59,9 @@ button, input[type=submit] {
     background-color: $secondary;
     padding: 1rem 1.5rem;
     border: none;
+    &:hover {
+        outline: 1px solid $quinary;
+    }
 }
 
 h1 {
