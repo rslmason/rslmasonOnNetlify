@@ -85,15 +85,40 @@ nav {
     width: 100%;
     z-index: 30;
     ul {
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         padding: $smallOffset max(20%, calc((100% - 700px) / 2));
         li {
             a {
                 padding: 1rem;
+                display: inline-block;
             }
         }
     }
+    @media (max-width: 800px) {
+        ul {
+            flex-direction: column;
+            li{
+                a {
+                    padding: 2rem;
+                }
+                &:not(#menuButton) {
+                    visibility: hidden;
+                    position: absolute;
+                }
+            }
+            &:hover{
+                li:not(#menuButton) {
+                    position: static;
+                    visibility: visible;
+                }
+                #menuButton {
+                    order: -1;
+                }
+            }
+        }
+    }
+
 }
 
 img {
@@ -319,16 +344,20 @@ section {
     &.contact, &.blog{
         > div {
             &:nth-of-type(1){
-                width: calc(35% - $largeOffset);
+                width: 35%;
+                min-width: 275px;
                 @media (max-width: 800px) {
                     width: 100%;
+                    min-width: none;
                 }
 
             }
             &:nth-of-type(2){
-                width: 65%;
+                width: calc(65% - $smallOffset);
+                max-width: calc(100% - (275px + $smallOffset));
                 @media (max-width: 800px) {
                     width: 100%;
+                    max-width: none;
                 }
                 > div {
                     &:not(:first-child) {
